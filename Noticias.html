@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Noticias - Femmedia</title>
+    <link rel="icon" type="image/png" href="favicon.png"> 
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="estilosnoticias.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    
+    <nav class="navbar navbar-expand navbar-dark sticky-top">
+        <div class="container-fluid px-4">
+            <a class="navbar-brand" href="#">
+                <img src="LOGO.png" alt="FM Logo" class="logo-img">
+            </a>
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html">Inicio</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="quienes-somos.html">Quienes somos</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="Media.html">Media</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="Programas.html">Programas</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="Noticias.html">Noticias</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="Contacto.html">Contacto</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="news-header">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-2 text-center text-md-end">
+                    <img src="megafono2.png" alt="Icono Noticias" class="header-icon">
+                </div>
+                <div class="col-md-10 text-center text-md-start">
+                    <h1 class="page-title">Noticias</h1>
+                    <p class="page-subtitle">
+                        Ponte al día de lo que está sucediendo a nivel <span class="highlight-yellow">nacional</span> y <span class="highlight-purple">mundial</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="container mb-4">
+        <div class="filter-bar row g-3 align-items-center">
+            <div class="col-md-5">
+                <div class="input-group">
+                    <span class="input-group-text bg-dark border-secondary text-white"><i class="fas fa-search"></i></span>
+                    <input type="text" id="searchInput" class="form-control bg-dark border-secondary text-white" placeholder="Buscar noticia...">
+                </div>
+            </div>
+
+            <div class="col-md-7 d-flex justify-content-md-end justify-content-between align-items-center gap-3 flex-wrap">
+                <div id="activeTagDisplay" class="tag-indicator text-purple fw-bold">
+                    Tag: <span class="text-white">Todos</span>
+                </div>
+
+                <button class="btn btn-outline-light btn-sm" onclick="resetFilters()">Ver Todo</button>
+                
+                <div class="d-flex align-items-center gap-2">
+                    <span class="sort-text d-none d-sm-inline">Ordenar:</span>
+                    <select id="sortSelect" class="form-select form-select-sm bg-dark text-white border-secondary" style="width: auto;" onchange="handleSortChange()">
+                        <option value="recent">Reciente</option>
+                        <option value="featured">Destacados</option>
+                    </select>
+                    
+                    <div class="sort-icons">
+                        <i class="fas fa-arrow-up" onclick="toggleSortDirection('asc')" title="Ascendente"></i>
+                        <i class="fas fa-arrow-down sort-active" onclick="toggleSortDirection('desc')" title="Descendente"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section class="container" id="news-container"> 
+
+        <article class="row news-item" data-tags="activismo comunidad" data-date="2025-11-25">
+            <div class="col-md-4">
+                <img src="imagenes/noticias_25n.jpg" alt="Imagen Noticia" class="news-img">
+            </div>
+            <div class="col-md-8">
+                <a href="#" class="news-title">Colectivos de mujeres se movilizan por el 25N</a>
+
+
+                <p class="news-date"><i class="far fa-calendar-alt me-2"></i>25 de Noviembre, 2025</p>
+
+                <p class="news-excerpt">
+                    Las asistentes exigieron políticas públicas para erradicar la violencia contra las mujeres. En lo que va del año se han registrado 349 femicidios en Ecuador.
+                </p>
+                <div class="tags-container">
+                    <button class="tag-btn" onclick="filterByTag('activismo')">Activismo</button>
+                    <button class="tag-btn" onclick="filterByTag('comunidad')">Comunidad</button>
+                </div>
+            </div>
+        </article>
+
+        <article class="row news-item" data-tags="arte comunidad" data-date="2025-11-11">
+            <div class="col-md-4">
+                <img src="imagenes/noticias_equis.jpg" alt="Imagen Noticia" class="news-img">
+            </div>
+            <div class="col-md-8">
+                <a href="#" class="news-title">Festival de Cine Feminista Equis este año tendrá premio del público; hay 43 películas en la cartelera que será presencial y virtual </a>
+                <p class="news-date"><i class="far fa-calendar-alt me-2"></i>11 de Noviembre, 2025</p>
+                <p class="news-excerpt">
+                    El encuentro será desde este miércoles 13 de noviembre en Quito, Cuenca y 14 localidades más en otras ciudades del Ecuador; también habrá cartelera virtual.
+                </p>
+                <div class="tags-container">
+                    <button class="tag-btn" onclick="filterByTag('arte')">Arte</button>
+                    <button class="tag-btn" onclick="filterByTag('comunidad')">Comunidad</button>
+                </div>
+            </div>
+        </article>
+
+        <article class="row news-item" data-tags="arte activismo" data-date="2025-09-18">
+            <div class="col-md-4">
+                <img src="imagenes/noticias_libro.JPG" alt="Imagen Noticia" class="news-img">
+            </div>
+            <div class="col-md-8">
+                <a href="#" class="news-title">Gloria Susana Esquivel trae su novela ‘Contradeseo’ a la Feria del Libro de Guayaquil, y habla sobre la cara no vista del feminismo </a>
+                <p class="news-date"><i class="far fa-calendar-alt me-2"></i>18 de Septiembre, 2025</p>
+                <p class="news-excerpt">
+                    La autora colombiana hablará sobre su obra hoy a las 19:00 en el Centro de Convenciones Simón Bolívar.
+                </p>
+                <div class="tags-container">
+                    <button class="tag-btn" onclick="filterByTag('arte')">Arte</button>
+                    <button class="tag-btn" onclick="filterByTag('activismo')">Activismo</button>
+                </div>
+            </div>
+        </article>
+
+        <article class="row news-item" data-tags="indigenas opinion" data-date="2024-09-09">
+            <div class="col-md-4">
+                <img src="imagenes/noticias_sumak.jpg" alt="Imagen Noticia" class="news-img">
+            </div>
+            <div class="col-md-8">
+                <a href="#" class="news-title">Feminismos y Sumak Kawsay</a>
+                <p class="news-date"><i class="far fa-calendar-alt me-2"></i>09 de Septiembre, 2025</p>
+                <p class="news-excerpt">
+                    Hoy las mujeres de pueblos y nacionalidades que nos asumimos feministas tenemos espacios de enunciación muy diversos.
+                </p>
+                <div class="tags-container">
+                    <button class="tag-btn" onclick="filterByTag('indigenas')">Indígenas</button>
+                    <button class="tag-btn" onclick="filterByTag('opinion')">Opinión</button>
+                </div>
+            </div>
+        </article>
+
+    </section>
+
+    <section class="cta-paper-section">
+        <div class="container">
+            <div class="paper-container">
+                <img src="mano.png"Hand" class="hand-holding rounded-circle">
+                
+                <div class="torn-paper">
+                    <p class="cta-text">¿Tienes alguna noticia que quieres reportar?</p>
+                    <a href="mailto:noticias.femmedia@gmail.com" class="btn-cta">Escribe a nuestro noticiero</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-dark text-white text-center py-3 mt-5" style="background-color: #9F20C4 !important;">
+        <div class="container">
+            <p class="mb-0">© Femmedia 2025. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        let currentTag = 'all';
+        let sortMode = 'recent'; 
+        let sortDirection = 'desc'; 
+        
+        const newsContainer = document.getElementById('news-container');
+        const originalNewsList = Array.from(document.querySelectorAll('.news-item'));
+
+        document.getElementById('searchInput').addEventListener('keyup', function() {
+            applyFilters();
+        });
+
+        function filterByTag(tag) {
+            currentTag = tag;
+            const label = (tag === 'all') ? 'Todos' : tag.toUpperCase();
+            document.querySelector('#activeTagDisplay span').textContent = label;
+            applyFilters();
+        }
+
+        function handleSortChange() {
+            sortMode = document.getElementById('sortSelect').value;
+            applyFilters();
+        }
+
+        function toggleSortDirection(direction) {
+            sortDirection = direction;
+            
+            const upArrow = document.querySelector('.fa-arrow-up');
+            const downArrow = document.querySelector('.fa-arrow-down');
+            
+            if(direction === 'asc') {
+                upArrow.classList.add('sort-active');
+                upArrow.classList.remove('text-secondary');
+                downArrow.classList.remove('sort-active');
+                downArrow.classList.add('text-secondary');
+            } else {
+                downArrow.classList.add('sort-active');
+                downArrow.classList.remove('text-secondary');
+                upArrow.classList.remove('sort-active');
+                upArrow.classList.add('text-secondary');
+            }
+            applyFilters();
+        }
+
+        function resetFilters() {
+            document.getElementById('searchInput').value = '';
+            document.getElementById('sortSelect').value = 'recent';
+            currentTag = 'all';
+            sortMode = 'recent';
+            sortDirection = 'desc';
+            document.querySelector('#activeTagDisplay span').textContent = 'Todos';
+            toggleSortDirection('desc');
+        }
+
+        function applyFilters() {
+            const searchValue = document.getElementById('searchInput').value.toLowerCase();
+            
+            let filteredList = originalNewsList.filter(item => {
+                const title = item.querySelector('.news-title').textContent.toLowerCase();
+                const excerpt = item.querySelector('.news-excerpt').textContent.toLowerCase();
+                const itemTags = item.getAttribute('data-tags');
+
+                const matchesSearch = title.includes(searchValue) || excerpt.includes(searchValue);
+                const matchesTag = (currentTag === 'all') || itemTags.includes(currentTag);
+
+                return matchesSearch && matchesTag;
+            });
+
+            if (sortMode === 'recent') {
+                filteredList.sort((a, b) => {
+                    const dateA = new Date(a.getAttribute('data-date'));
+                    const dateB = new Date(b.getAttribute('data-date'));
+                    return dateA - dateB; 
+                });
+            } else if (sortMode === 'featured') {
+                filteredList.sort(() => Math.random() - 0.5);
+            }
+
+            if (sortDirection === 'desc') {
+                filteredList.reverse();
+            }
+
+            newsContainer.innerHTML = '';
+            if (filteredList.length > 0) {
+                filteredList.forEach(item => {
+                    item.classList.remove('hidden-news');
+                    newsContainer.appendChild(item);
+                });
+            } else {
+                newsContainer.innerHTML = '<div class="text-center py-5 text-muted"><h4>No se encontraron resultados.</h4></div>';
+            }
+        }
+
+        toggleSortDirection('desc');
+    </script>
+
+</body>
+</html>

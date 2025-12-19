@@ -1,0 +1,503 @@
+/* Variables de color */
+:root {
+    --magenta: #9F20C4;
+    --yellow: #F6F46A;
+    --black: #000000;
+    --white: #ffffff;
+}
+
+/* Reset y estilos generales */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Jost', sans-serif;
+    background-color: var(--black);
+    color: var(--white);
+    overflow-x: hidden;
+    position: relative;
+    min-height: 100vh;
+}
+
+/* Capa del SVG de fondo universal */
+body::before {
+    content: "";
+    background-image: url('grafico1.svg'); 
+    
+    /* Pega el SVG arriba a la izquierda */
+    background-position: left top; 
+    background-repeat: no-repeat;
+    
+    /* Cubre el ancho total y mantiene su forma cuadrada */
+    background-size: contain; 
+    
+    /* Opacidad y dimensiones */
+    opacity: 0.10; 
+    position: fixed; 
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    
+    /* Capas y comportamiento */
+    z-index: -1; 
+    pointer-events: none; 
+}
+
+/* Navbar */
+.navbar {
+    background-color: var(--black) !important;
+    border-bottom: 2px solid #333;
+    padding: 1rem 0;
+    overflow-x: hidden;
+}
+
+.navbar .container-fluid {
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+.logo-img {
+    height: 50px;
+    width: auto;
+}
+
+.navbar-nav {
+    gap: 1rem;
+    flex-wrap: nowrap;
+}
+
+.navbar-nav .nav-link {
+    color: var(--yellow) !important;
+    font-weight: 500;
+    font-size: 1.1rem;
+    transition: color 0.3s ease;
+    padding: 0.5rem 1rem;
+    white-space: nowrap;
+}
+
+.navbar-nav .nav-link:hover {
+    color: var(--magenta) !important;
+}
+
+/* Hero Section */
+.hero-section {
+    padding: 4rem 0;
+    position: relative;
+}
+
+.hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at 30% 50%, rgba(159, 32, 196, 0.1) 0%, transparent 50%);
+    pointer-events: none;
+}
+
+.hero-section .container {
+    position: relative;
+}
+
+.subtitle {
+    font-size: 2.5rem;
+    font-weight: 300;
+    margin-bottom: 0;
+}
+
+.main-title {
+    font-size: 5rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    line-height: 1;
+}
+
+.fm-text {
+    color: var(--yellow);
+}
+
+.hero-description {
+    font-size: 1.3rem;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+}
+
+.magenta-text {
+    color: var(--magenta);
+    font-weight: 600;
+}
+
+.yellow-text {
+    color: var(--yellow);
+    font-weight: 600;
+}
+
+.fm-logo-large {
+    max-width: 100%;
+    height: auto;
+    filter: drop-shadow(0 0 20px rgba(246, 244, 106, 0.3));
+}
+
+/* Map Section */
+.map-section {
+    padding: 4rem 0;
+    background: radial-gradient(circle at 70% 50%, rgba(159, 32, 196, 0.15) 0%, transparent 60%);
+}
+
+.map-title {
+    font-size: 2.5rem;
+    color: var(--yellow);
+    margin-bottom: 3rem;
+    font-weight: 600;
+}
+
+.map-section .row {
+    align-items: start;
+}
+
+.ecuador-map {
+    width: 100%;
+    max-width: none;
+    height: auto;
+}
+
+.province {
+    fill: var(--magenta);
+    stroke: var(--black);
+    stroke-width: 1;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.province:hover {
+    fill: var(--yellow);
+    stroke: var(--magenta);
+    stroke-width: 2;
+}
+
+.stats-container {
+    padding: 0;
+    margin-top: 0;
+}
+
+@media (min-width: 992px) {
+    .map-section .col-lg-5 {
+        align-items: flex-start !important;
+    }
+    
+    .stats-container {
+        margin-top: -5rem;
+    }
+}
+
+.megaphone-icon {
+    width: 120px;
+    height: auto;
+    margin-bottom: -1rem;
+}
+
+.stat-number {
+    font-size: 10rem;
+    font-weight: 700;
+    color: var(--yellow);
+    line-height: 1;
+    margin-top: -1rem;
+    margin-bottom: -0.5rem;
+}
+
+.stat-title {
+    font-size: 1.8rem;
+    margin-bottom: 0;
+}
+
+.stat-subtitle {
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: 0;
+}
+
+.province-name {
+    color: var(--yellow);
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+
+.stat-hint {
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.6);
+    font-style: italic;
+    margin-bottom: 0;
+}
+
+/* Carousel Section */
+.carousel-section {
+    background-color: transparent;
+}
+
+.btn-programas {
+    background-color: var(--magenta);
+    color: var(--yellow);
+    border: none;
+    transition: all 0.3s ease;
+}
+
+.btn-programas:hover {
+    background-color: var(--yellow);
+    color: var(--magenta);
+    transform: scale(1.05);
+}
+
+/* Program Cards */
+.program-card {
+    background-color: transparent;
+    transition: transform 0.3s ease;
+}
+
+.program-card:hover {
+    transform: translateY(-5px);
+}
+
+.program-image {
+    aspect-ratio: 4/3;
+    background-color: #1a1a1a;
+    border-color: var(--magenta) !important;
+}
+
+.program-content {
+    background: radial-gradient(ellipse at center, rgba(159, 32, 196, 0.1) 0%, transparent 70%);
+}
+
+.program-title {
+    color: var(--yellow);
+}
+
+.program-description {
+    color: var(--white);
+}
+
+.program-lines {
+    width: 100%;
+    height: 3px;
+    background: repeating-linear-gradient(
+        90deg,
+        var(--yellow) 0px,
+        var(--yellow) 40px,
+        transparent 40px,
+        transparent 50px
+    );
+}
+
+.btn-mas-info {
+    background-color: var(--magenta);
+    color: var(--yellow);
+    border: none;
+    transition: all 0.3s ease;
+}
+
+.btn-mas-info:hover {
+    background-color: var(--yellow);
+    color: var(--magenta);
+}
+
+/* Carousel Controls */
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    background-color: var(--magenta);
+}
+
+/* Responsive */
+@media (max-width: 1199px) {
+    .main-title {
+        font-size: 3.5rem;
+    }
+    
+    .map-title {
+        font-size: 2rem;
+    }
+    
+    .stat-number {
+        font-size: 8rem;
+    }
+}
+
+@media (max-width: 991px) {
+    .main-title {
+        font-size: 3rem;
+    }
+    
+    .hero-description {
+        font-size: 1.2rem;
+    }
+    
+    .stat-number {
+        font-size: 7rem;
+        margin-top: -1rem;
+        margin-bottom: -0.5rem;
+    }
+    
+    .map-title {
+        text-align: center;
+        margin-bottom: 1.5rem;
+    }
+    
+    .map-section {
+        padding: 2rem 0;
+    }
+    
+    .stats-container {
+        transform: translateY(-60px);
+    }
+    
+    .fm-logo-large {
+        max-width: 80%;
+        margin: 0 auto;
+        display: block;
+    }
+    
+    .hero-section .container,
+    .map-section .container {
+        text-align: center;
+    }
+    
+    .megaphone-icon {
+        margin-bottom: -0.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .logo-img {
+        height: 40px;
+    }
+    
+    .navbar-nav {
+        gap: 0.1rem;
+    }
+    
+    .navbar-nav .nav-link {
+        font-size: 0.7rem;
+        padding: 0.4rem 0.3rem;
+    }
+    
+    .main-title {
+        font-size: 2.5rem;
+    }
+    
+    .subtitle {
+        font-size: 2rem;
+    }
+    
+    .hero-description {
+        font-size: 1.1rem;
+    }
+    
+    .map-title {
+        font-size: 1.8rem;
+        margin-bottom: 1rem;
+    }
+    
+    .stats-container {
+        transform: translateY(-40px);
+    }
+    
+    .stat-number {
+        font-size: 5rem;
+        margin-top: -0.8rem;
+        margin-bottom: -0.3rem;
+    }
+    
+    .stat-title {
+        font-size: 1.4rem;
+    }
+    
+    .megaphone-icon {
+        margin-bottom: -0.5rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .navbar {
+        padding: 0.5rem 0;
+    }
+    
+    .navbar .container-fluid {
+        padding-left: 0.5rem;
+        padding-right: 0.5rem;
+    }
+    
+    .logo-img {
+        height: 30px;
+    }
+    
+    .navbar-nav {
+        gap: 0;
+    }
+    
+    .navbar-nav .nav-link {
+        font-size: 0.55rem;
+        padding: 0.3rem 0.15rem;
+    }
+    
+    .subtitle {
+        font-size: 1.5rem;
+    }
+    
+    .main-title {
+        font-size: 2rem;
+    }
+    
+    .hero-description {
+        font-size: 1rem;
+    }
+    
+    .map-title {
+        font-size: 1.5rem;
+        margin-bottom: 0.8rem;
+    }
+    
+    .map-section {
+        padding: 1.5rem 0;
+    }
+    
+    .stats-container {
+        transform: translateY(-30px);
+    }
+    
+    .stat-number {
+        font-size: 4rem;
+        margin-top: -0.5rem;
+        margin-bottom: -0.3rem;
+    }
+    
+    .stat-title {
+        font-size: 1.2rem;
+    }
+    
+    .megaphone-icon {
+        width: 80px;
+        margin-bottom: -0.3rem;
+    }
+    
+    .carousel-title {
+        font-size: 1.3rem;
+    }
+    
+    .btn-programas {
+        font-size: 1.2rem;
+    }
+    
+    .program-title {
+        font-size: 1.3rem;
+    }
+    
+    .hero-section .container,
+    .map-section .container,
+    .carousel-section .container {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+}

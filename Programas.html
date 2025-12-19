@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Programas - Femmedia</title>
+    <link rel="icon" type="image/png" href="favicon.png"> 
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="estilosprogramas.css">
+</head>
+<body>
+
+<nav class="navbar navbar-expand navbar-dark sticky-top">
+        <div class="container-fluid px-4">
+            <a class="navbar-brand" href="#">
+                <img src="LOGO.png" alt="FM Logo" class="logo-img">
+            </a>
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html">Inicio</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="quienes-somos.html">Quienes somos</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="Media.html">Media</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="Programas.html">Programas</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="Noticias.html">Noticias</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="Contacto.html">Contacto</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="programs-hero container">
+        <div class="row align-items-center">
+            <div class="col-md-8">
+                <h1 class="page-title">Programas</h1>
+                <p class="hero-subtitle">
+                    Construyendo <span class="text-purple">espacios seguros</span> una <span class="text-yellow">acción</span> a la vez. ¡Todo aporte ayuda!
+                </p>
+            </div>
+            <div class="col-md-4 text-center d-none d-md-block">
+                <img src="fists.png" alt="Graphic" class="hero-graphic img-fluid">
+            </div>
+        </div>
+    </section>
+
+    <section class="container mb-5">
+        <div class="toolbar row g-3 align-items-center justify-content-center">
+            <div class="col-md-8">
+                <div class="input-group">
+                    <span class="input-group-text bg-dark border-secondary text-white"><i class="fas fa-search"></i></span>
+                    <input type="text" id="searchInput" class="form-control bg-dark border-secondary text-white" placeholder="Buscar programas...">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="container" id="programs-container">
+    </section>
+
+    <section class="container mt-4 mb-5">
+        <div class="pagination-container d-flex justify-content-between align-items-center" id="pagination-controls">
+            <button class="btn btn-outline-purple prev-page" disabled>&lt; Anterior</button>
+            <span class="page-info text-white">Página 1 de 1</span>
+            <button class="btn btn-outline-purple next-page" disabled>Siguiente &gt;</button>
+        </div>
+    </section>
+
+    <footer class="bg-dark text-white text-center py-3 mt-5" style="background-color: #9F20C4 !important;">
+        <div class="container">
+            <p class="mb-0">© Femmedia 2025. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+    <script>
+        const itemsPerPage = 2; 
+        let state = {
+            data: [],
+            filtered: [],
+            currentPage: 1
+        };
+
+        state.data = [
+            {
+                id: 1,
+                title: "Periodismo en Violeta",
+                mainDesc: "Con el estudio “Periodismo en violeta”, que cubrió el período 2020-2024, se evidencia que esas desigualdades que enfrentan las mujeres periodistas ecuatorianas son estructurales y limitantes para el desarrollo de un periodismo y una comunicación social equitativos.",
+                fullDesc: "De acuerdo con la Fundación Andina para la Observación y Estudio de Medios (Fundamedios), de los 14 exilios de periodistas que se registran en Ecuador por amenazas a su integridad física y a la vida, 6 corresponden a mujeres. El primer caso de exilio se reportó en 2023 y se trató de una mujer.",
+                image: "imagenes/programas_violeta1.png",
+                subImage: "imagenes/programas_violeta2.png"
+            },
+            {
+                id: 2,
+                title: "Marcha 25N 2025",
+                mainDesc: "Este 25 de noviembre, colectivos feministas, familiares de víctimas y organizaciones sociales tomaran las calles de Quito para conmemorar el Día Internacional de la Eliminación de la Violencia contra la Mujer, en un contexto nacional marcado por un alarmante incremento de la inseguridad y la violencia de género.",
+                fullDesc: "De acuerdo con la Alianza Feminista para el Mapeo de los Femicidios, el año 2024 cerró con 274 muertes violentas por razones de género, y el 2025 se perfila como uno de los años más letales, evidenciando una crisis estructural que exige acciones inmediatas y no da tregua.",
+                image: "imagenes/programas_25n1.jpg",
+                subImage: "imagenes/programas_25n2.jpg"
+            },
+            {
+                id: 3,
+                title: "Programa 3",
+                mainDesc: "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit.",
+                fullDesc: "Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt.",
+                image: "https://placehold.co/600x400/777/FFF?text=Programa+3",
+                subImage: "https://placehold.co/400x300/888/FFF?text=Img+Extra"
+            },
+            {
+                id: 4,
+                title: "Programa 4",
+                mainDesc: "Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+                fullDesc: "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias.",
+                image: "https://placehold.co/600x400/999/FFF?text=Programa+4",
+                subImage: "https://placehold.co/400x300/aaa/FFF?text=Img+Extra"
+            }
+        ];
+
+        function init() {
+            const searchInput = document.getElementById('searchInput');
+            const pagination = document.getElementById('pagination-controls');
+
+            searchInput.addEventListener('keyup', handleSearch);
+            
+            pagination.querySelector('.prev-page').addEventListener('click', () => {
+                if (state.currentPage > 1) {
+                    state.currentPage--;
+                    render();
+                }
+            });
+
+            pagination.querySelector('.next-page').addEventListener('click', () => {
+                const maxPage = Math.ceil(state.filtered.length / itemsPerPage);
+                if (state.currentPage < maxPage) {
+                    state.currentPage++;
+                    render();
+                }
+            });
+
+            handleSearch(); 
+            
+            checkHashScroll();
+        }
+
+        function handleSearch() {
+            const query = document.getElementById('searchInput').value.toLowerCase();
+            state.filtered = state.data.filter(item => 
+                item.title.toLowerCase().includes(query) || 
+                item.mainDesc.toLowerCase().includes(query)
+            );
+            state.currentPage = 1; 
+            render();
+        }
+
+        function render() {
+            const container = document.getElementById('programs-container');
+            container.innerHTML = '';
+
+            const startIndex = (state.currentPage - 1) * itemsPerPage;
+            const paginatedItems = state.filtered.slice(startIndex, startIndex + itemsPerPage);
+
+            if (paginatedItems.length === 0) {
+                container.innerHTML = '<div class="text-center py-5 text-muted"><h4>No se encontraron programas.</h4></div>';
+                updatePagination();
+                return;
+            }
+
+            paginatedItems.forEach((item, index) => {
+                const isEven = (startIndex + index) % 2 !== 0;
+                
+                const orderClassImg = isEven ? 'order-md-2 offset-md-1' : 'order-md-1';
+                const orderClassText = isEven ? 'order-md-1' : 'order-md-2 offset-md-1';
+
+                const html = `
+                    <div id="programa-${item.id}" class="program-section py-5 border-bottom border-secondary" style="scroll-margin-top: 100px;">
+                        <div class="row align-items-center mb-4">
+                            <div class="col-md-5 ${orderClassImg} mb-3 mb-md-0">
+                                <img src="${item.image}" alt="${item.title}" class="img-fluid program-main-img">
+                            </div>
+                            <div class="col-md-6 ${orderClassText}">
+                                <h2 class="program-title text-yellow mb-3">${item.title}</h2>
+                                <p class="program-desc text-white">${item.mainDesc}</p>
+                            </div>
+                        </div>
+                        
+                        <div class="row mt-4">
+                            <div class="col-12 mb-4">
+                                <p class="program-full-desc text-gray">${item.fullDesc}</p>
+                            </div>
+                        </div>
+
+                        <div class="row align-items-center">
+                            <div class="col-md-7 mb-3">
+                                
+                                <a href="contacto.html" class="btn btn-cta-program mt-3">¡Aplica para unirte!</a>
+                            </div>
+                            <div class="col-md-5">
+                                <img src="${item.subImage}" alt="Extra" class="img-fluid rounded border border-secondary">
+                            </div>
+                        </div>
+                    </div>
+                `;
+                container.innerHTML += html;
+            });
+
+            updatePagination();
+        }
+
+        function updatePagination() {
+            const pagination = document.getElementById('pagination-controls');
+            const maxPage = Math.ceil(state.filtered.length / itemsPerPage) || 1;
+            
+            pagination.querySelector('.page-info').textContent = `Página ${state.currentPage} de ${maxPage}`;
+            pagination.querySelector('.prev-page').disabled = state.currentPage === 1;
+            pagination.querySelector('.next-page').disabled = state.currentPage === maxPage || maxPage === 0;
+        }
+
+        function checkHashScroll() {
+            if (window.location.hash) {
+                const id = window.location.hash.substring(1); 
+                
+                const targetItem = state.data.find(p => `programa-${p.id}` === id);
+                
+                if (targetItem) {
+                    const index = state.data.indexOf(targetItem);
+                    state.currentPage = Math.floor(index / itemsPerPage) + 1;
+                    
+                    state.filtered = state.data; 
+                    render();
+
+                    setTimeout(() => {
+                        const element = document.getElementById(id);
+                        if (element) {
+                            element.scrollIntoView({ behavior: 'smooth' });
+                        }
+                    }, 100); 
+                }
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', init);
+    </script>
+</body>
+</html>

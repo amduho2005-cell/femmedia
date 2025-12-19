@@ -1,0 +1,407 @@
+/* =========================
+   ESTILOS GENERALES
+   ========================= */
+@import url('https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&family=Sansation:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap');
+
+:root {
+    --magenta: #9F20C4;
+    --yellow: #F6F46A;
+    --black: #000000;
+    --white: #ffffff;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #000000;
+    color: #ffffff;
+    font-family: 'Jost', sans-serif;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+/* Capa del SVG de fondo universal */
+body::before {
+    content: "";
+    background-image: url('grafico1.svg'); 
+    
+    /* Pega el SVG arriba a la izquierda */
+    background-position: left top; 
+    background-repeat: no-repeat;
+    
+    /* Cubre el ancho total y mantiene su forma cuadrada */
+    background-size: contain; 
+    
+    /* Opacidad y dimensiones */
+    opacity: 0.10; 
+    position: fixed; 
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    
+    /* Capas y comportamiento */
+    z-index: -1; 
+    pointer-events: none; 
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* =========================
+   NAVBAR
+   ========================= */
+.navbar {
+    background-color: var(--black) !important;
+    border-bottom: 2px solid #333;
+    padding: 1rem 0;
+    overflow-x: hidden;
+}
+
+.navbar .container-fluid {
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+.logo-img {
+    height: 50px;
+    width: auto;
+}
+
+.navbar-nav {
+    gap: 1rem;
+    flex-wrap: nowrap;
+}
+
+.navbar-nav .nav-link {
+    color: var(--yellow) !important;
+    font-weight: 500;
+    font-size: 1.1rem;
+    transition: color 0.3s ease;
+    padding: 0.5rem 1rem;
+    white-space: nowrap;
+}
+
+.navbar-nav .nav-link:hover {
+    color: var(--magenta) !important;
+}
+
+
+/* =========================
+   HEADER NOTICIAS
+   ========================= */
+.news-header {
+    padding: 40px 0;
+    position: relative;
+}
+
+.header-icon {
+    max-width: 150px;
+    transform: rotate(-15deg);
+}
+
+.page-title {
+    font-size: 4rem;
+    font-weight: 800;
+    color: #ffffff;
+    text-transform: uppercase;
+    line-height: 1;
+}
+
+.page-subtitle {
+    color: #cccccc;
+    font-size: 1.1rem;
+    margin-top: 10px;
+}
+
+.highlight-yellow { color: #FCF46A; font-weight: bold; }
+.highlight-purple { color: #9F20C4; font-weight: bold; }
+
+/* =========================
+   BARRA DE FILTROS Y BÚSQUEDA
+   ========================= */
+.filter-bar {
+    padding: 20px 0;
+    border-bottom: 1px solid #333;
+    margin-bottom: 40px;
+}
+
+.tag-indicator {
+    font-size: 0.95rem;
+    border: 1px solid #333;
+    padding: 5px 15px;
+    border-radius: 5px;
+    background-color: #111;
+}
+
+.sort-text {
+    font-size: 0.9rem;
+    color: #aaa;
+}
+
+.sort-active { color: #FCF46A !important; }
+.text-secondary { color: #555 !important; }
+
+.sort-icons {
+    font-size: 1.1rem;
+    cursor: pointer;
+    display: flex;
+    gap: 5px;
+}
+
+.sort-icons i {
+    transition: color 0.3s;
+}
+
+.sort-icons i:hover {
+    color: #fff;
+}
+
+
+.form-control::placeholder {
+    color: #666;
+    font-style: italic;
+}
+
+.form-control:focus, .form-select:focus {
+    background-color: #222;
+    color: #fff;
+    border-color: #9F20C4;
+    box-shadow: 0 0 0 0.25rem rgba(159, 32, 196, 0.25);
+}
+
+/* =========================
+   LISTA DE NOTICIAS
+   ========================= */
+.news-item {
+    margin-bottom: 50px;
+    border-bottom: 1px solid #222;
+    padding-bottom: 30px;
+    transition: all 0.3s ease;
+}
+
+.news-img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    background-color: #222;
+    border-radius: 4px;
+}
+
+.news-title {
+    color: #FCF46A;
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 15px;
+    text-decoration: none;
+    display: block;
+}
+
+.news-title:hover {
+    color: #fff;
+}
+
+.news-excerpt {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #ddd;
+    margin-bottom: 20px;
+}
+
+.tags-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.tag-btn {
+    background: transparent;
+    border: 1px solid #FCF46A;
+    color: #FCF46A;
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.tag-btn:hover {
+    background-color: #FCF46A;
+    color: #000000;
+}
+
+/* =========================
+   CONTACTO NOTICIERO
+   ========================= */
+.cta-paper-section {
+    position: relative;
+    padding: 80px 0;
+    text-align: center;
+    margin-top: 50px;
+}
+
+.paper-container {
+    position: relative;
+    display: inline-block;
+    max-width: 700px; 
+    width: 100%;
+}
+
+.hand-holding {
+    position: absolute;
+    top: -40px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 120px;
+    z-index: 2;
+}
+
+.torn-paper {
+    position: relative;
+    background-image: url('papel.png');
+    background-size: 80% 120%; 
+    background-repeat: no-repeat;
+    background-position: center;
+    padding: 80px 60px 60px 60px;
+    min-height: 250px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.cta-text {
+    color: #000000; 
+    font-weight: bold;
+    font-size: 1.4rem;
+    margin-bottom: 25px;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.5); 
+}
+
+.btn-cta {
+    background-color: #9F20C4;
+    color: white;
+    padding: 10px 25px;
+    border: none;
+    font-weight: bold;
+    text-decoration: none;
+    display: inline-block;
+    border-radius: 5px;
+    transition: background 0.3s;
+}
+
+.btn-cta:hover {
+    background-color: #FCF46A;
+    color: black;
+}
+
+.form-control::placeholder { color: #666; font-style: italic; }
+.form-control:focus, .form-select:focus {
+    background-color: #222;
+    color: #fff;
+    border-color: #9F20C4;
+    box-shadow: 0 0 0 0.25rem rgba(159, 32, 196, 0.25);
+}
+
+.tag-indicator {
+    font-size: 0.95rem;
+    border: 1px solid #333;
+    padding: 5px 15px;
+    border-radius: 5px;
+    background-color: #111;
+}
+
+.sort-text { font-size: 0.9rem; color: #aaa; }
+.text-secondary { color: #555 !important; }
+
+.sort-icons {
+    font-size: 1.1rem;
+    cursor: pointer;
+    display: flex;
+    gap: 8px;
+}
+.sort-icons i { transition: color 0.3s; }
+.sort-icons i:hover { color: #fff; }
+
+.news-title { margin-bottom: 5px; }
+.news-title:hover { color: #fff; }
+
+.news-date {
+    font-size: 0.9rem;
+    color: #aaaaaa;
+    margin-bottom: 15px;
+    font-style: italic;
+}
+
+@media (max-width: 768px) {
+    .filter-bar { flex-direction: column; align-items: stretch; }
+    .col-md-7 { flex-direction: column; align-items: stretch !important; }
+}
+
+
+/* =========================
+   RESPONSIVE
+   ========================= */
+@media (max-width: 768px) {
+    .logo-img {
+        height: 40px;
+    }
+    
+    .navbar-nav {
+        gap: 0.1rem;
+    }
+    
+    .navbar-nav .nav-link {
+        font-size: 0.7rem;
+        padding: 0.4rem 0.3rem;
+    }
+
+    .page-title { font-size: 2.5rem; text-align: center; }
+    .header-icon { margin: 0 auto 20px; display: block; max-width: 100px; }
+    
+    .filter-bar { 
+        flex-direction: column; 
+        align-items: stretch;
+    }
+    
+    .col-md-7 {
+        flex-direction: column;
+        align-items: stretch !important;
+    }
+    
+    .news-img { height: 200px; margin-bottom: 15px; }
+    .torn-paper { width: 95%; margin: 0 auto; padding: 60px 20px; }
+}
+
+@media (max-width: 576px) {
+    .navbar {
+        padding: 0.5rem 0;
+    }
+    
+    .navbar .container-fluid {
+        padding-left: 0.25rem;
+        padding-right: 0.25rem;
+    }
+    
+    .logo-img {
+        height: 28px;
+    }
+    
+    .navbar-nav {
+        gap: 0;
+    }
+    
+    .navbar-nav .nav-link {
+        font-size: 0.45rem;
+        padding: 0.25rem 0.08rem;
+    }
+}

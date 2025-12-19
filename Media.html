@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Media - Femmedia</title>
+    <link rel="icon" type="image/png" href="favicon.png"> 
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="estilosmedia.css">
+</head>
+<body>
+
+    <nav class="navbar navbar-expand navbar-dark sticky-top">
+        <div class="container-fluid px-4">
+            <a class="navbar-brand" href="#">
+                <img src="LOGO.png" alt="FM Logo" class="logo-img">
+            </a>
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html">Inicio</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="quienes-somos.html">Quienes somos</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="Media.html">Media</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="Programas.html">Programas</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="Noticias.html">Noticias</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="Contacto.html">Contacto</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+
+    <section class="media-hero container">
+        <div class="row align-items-center">
+            <div class="col-md-8">
+                <h1 class="media-title"><span class="text-yellow">Fotos</span>, <span class="text-yellow">Videos</span> y <span class="text-yellow">Audio</span></h1>
+                <p class="media-subtitle">Recursos, archivos y voces que <span class="text-purple">amplifican</span> nuestra <span class="text-yellow">causa</span></p>
+            </div>
+            <div class="col-md-4 text-center d-none d-md-block">
+            <img src="camara.png" alt="Icono Media" class="img-fluid headline-icon" style="max-height: 400px;">
+        </div>
+        </div>
+    </section>
+
+    <section id="fotos-section" class="container media-section">
+        <div class="section-header d-flex align-items-center justify-content-between mb-4">
+            <h2 class="section-title"><i class="fas fa-camera text-yellow me-3"></i>Fotos</h2>
+        </div>
+
+        <div class="toolbar row g-3 align-items-center mb-4">
+            <div class="col-md-6">
+                <div class="input-group">
+                    <span class="input-group-text bg-dark border-secondary text-white"><i class="fas fa-search"></i></span>
+                    <input type="text" id="photosSearch" class="form-control bg-dark border-secondary text-white" placeholder="Buscar colecciones...">
+                </div>
+            </div>
+            <div class="col-md-6 d-flex justify-content-end align-items-center gap-3">
+                <select id="photosSort" class="form-select form-select-sm bg-dark text-white border-secondary" style="width: auto;">
+                    <option value="recent">Reciente</option>
+                    <option value="featured">Destacados</option>
+                </select>
+                <div class="sort-icons" id="photosSortDir" data-dir="desc">
+                    <i class="fas fa-arrow-up"></i>
+                    <i class="fas fa-arrow-down sort-active"></i>
+                </div>
+            </div>
+        </div>
+
+        <div id="photos-container"></div>
+
+        <div class="pagination-container d-flex justify-content-between align-items-center mt-4" id="photos-pagination">
+            <button class="btn btn-outline-purple prev-page" disabled>&lt; Anterior</button>
+            <span class="page-info text-white">Página 1 de 1</span>
+            <button class="btn btn-outline-purple next-page" disabled>Siguiente &gt;</button>
+        </div>
+    </section>
+
+    <section id="videos-section" class="container media-section mt-5">
+        <div class="section-header d-flex align-items-center justify-content-between mb-4">
+            <h2 class="section-title"><i class="fas fa-headphones text-purple me-3"></i>Videos</h2>
+        </div>
+
+        <div class="toolbar row g-3 align-items-center mb-4">
+            <div class="col-md-6">
+                <div class="input-group">
+                    <span class="input-group-text bg-dark border-secondary text-white"><i class="fas fa-search"></i></span>
+                    <input type="text" id="videosSearch" class="form-control bg-dark border-secondary text-white" placeholder="Buscar videos...">
+                </div>
+            </div>
+            <div class="col-md-6 d-flex justify-content-end align-items-center gap-3">
+                <select id="videosSort" class="form-select form-select-sm bg-dark text-white border-secondary" style="width: auto;">
+                    <option value="recent">Reciente</option>
+                    <option value="featured">Destacados</option>
+                </select>
+                <div class="sort-icons" id="videosSortDir" data-dir="desc">
+                    <i class="fas fa-arrow-up"></i>
+                    <i class="fas fa-arrow-down sort-active"></i>
+                </div>
+            </div>
+        </div>
+
+        <div id="videos-container" class="media-list"></div>
+
+        <div class="pagination-container d-flex justify-content-between align-items-center mt-4" id="videos-pagination">
+             <button class="btn btn-outline-purple prev-page" disabled>&lt; Anterior</button>
+            <span class="page-info text-white">Página 1 de 1</span>
+            <button class="btn btn-outline-purple next-page" disabled>Siguiente &gt;</button>
+        </div>
+    </section>
+
+    <section id="podcasts-section" class="container media-section mt-5 mb-5">
+        <div class="section-header d-flex align-items-center justify-content-between mb-4">
+            <h2 class="section-title"><i class="fas fa-microphone text-yellow me-3"></i>Audio</h2>
+        </div>
+
+        <div class="toolbar row g-3 align-items-center mb-4">
+            <div class="col-md-6">
+                <div class="input-group">
+                    <span class="input-group-text bg-dark border-secondary text-white"><i class="fas fa-search"></i></span>
+                    <input type="text" id="podcastsSearch" class="form-control bg-dark border-secondary text-white" placeholder="Buscar podcasts...">
+                </div>
+            </div>
+            <div class="col-md-6 d-flex justify-content-end align-items-center gap-3">
+                <select id="podcastsSort" class="form-select form-select-sm bg-dark text-white border-secondary" style="width: auto;">
+                    <option value="recent">Reciente</option>
+                    <option value="featured">Destacados</option>
+                </select>
+                <div class="sort-icons" id="podcastsSortDir" data-dir="desc">
+                    <i class="fas fa-arrow-up"></i>
+                    <i class="fas fa-arrow-down sort-active"></i>
+                </div>
+            </div>
+        </div>
+
+        <div id="podcasts-container" class="media-list"></div>
+
+        <div class="pagination-container d-flex justify-content-between align-items-center mt-4" id="podcasts-pagination">
+             <button class="btn btn-outline-purple prev-page" disabled>&lt; Anterior</button>
+            <span class="page-info text-white">Página 1 de 1</span>
+            <button class="btn btn-outline-purple next-page" disabled>Siguiente &gt;</button>
+        </div>
+    </section>
+
+    <footer class="bg-dark text-white text-center py-3 mt-5" style="background-color: #9F20C4 !important;">
+        <div class="container">
+            <p class="mb-0">© Femmedia 2025. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <div class="modal fade" id="imageModal" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content bg-dark">
+          <div class="modal-body p-0 position-relative">
+            <button type="button" class="btn-close btn-close-white position-absolute top-0 end-0 m-3 z-3" data-bs-dismiss="modal" aria-label="Close"></button>
+            <img src="" class="d-block w-100" id="modalImage" alt="Full screen image">
+            <div class="p-3 text-center text-white" id="modalCaption"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+    <script>
+        const itemsPerPage = 2;
+        const thumbnailsPerSlide = 4; 
+
+        let photosState = { data: [], filtered: [], currentPage: 1 };
+        let videosState = { data: [], filtered: [], currentPage: 1 };
+        let podcastsState = { data: [], filtered: [], currentPage: 1 };
+
+        photosState.data = [
+            {
+                id: 1, title: "Marcha 25N", date: "2025-11-25", description: "Fotos de la marcha del 25 de noviembre por el Día Internacional de la Eliminación de la Violencia contra la Mujer.",
+                images: [
+                    { src: "imagenes/media_25n3.jpg", caption: "Cartel 'Fin a la Violencia Machista'" },
+                    { src: "imagenes/media_25n4.jpeg", caption: "Descripción de foto 1.2" },
+                    { src: "imagenes/media_25n5.jpg", caption: "Descripción de foto 1.3" },
+                    { src: "imagenes/media_25n6.jpg", caption: "Descripción de foto 1.4" },
+                    { src: "imagenes/media_25n7.jpg", caption: "Descripción de foto 1.5" },
+                    { src: "imagenes/media_25n9.jpg", caption: "Descripción de foto 1.5" }
+                ]
+            },
+            {
+                id: 2, title: "Festival Equis", date: "2025-11-11", description: "Imágenes del Festival Equis, un espacio dedicado a visibilizar y promover los derechos de las mujeres a través del arte y la cultura.",
+                images: [
+                    { src: "imagenes/media_equis1.jpg", caption: "Descripción de foto 2.1" },
+                    { src: "imagenes/media_equis2.jpg", caption: "Descripción de foto 2.2" },
+                    { src: "imagenes/media_equis3.jpg", caption: "Descripción de foto 2.3" },
+                    { src: "imagenes/media_equis4.jpg", caption: "Descripción de foto 2.4" }
+                ]
+            },
+             {
+                id: 3, title: "Orgullo Ecuador", date: "2025-06-23", description: "Imágenes de la celebración del Orgullo LGBTQ+ en Ecuador, destacando la diversidad y la lucha por los derechos igualitarios.",
+                images: [
+                    { src: "imagenes/media_pride1.jpg", caption: "Descripción de foto 3.1" },
+                    { src: "imagenes/media_pride2.jpg", caption: "Descripción de foto 3.2" },
+                     { src: "imagenes/media_pride3.jpg", caption: "Descripción de foto 3.3" },
+                     { src: "imagenes/media_pride4.jpg", caption: "Descripción de foto 3.3" },
+                     { src: "imagenes/media_pride5.jpg", caption: "Descripción de foto 3.3" }
+                ]
+            }
+        ];
+
+        videosState.data = [
+            { id: 1, title: "Entrevista Gema Cobeña", date: "2025-10-16", description: "Comunicadora social y activista Gema Cobeña relata cómo la dificultad para las mujeres comunicadoras se da por múltiples factores, entre ellos la inseguridad, la representación social y los roles de género.", link: "https://https://youtu.be/6wGk_NEGfjA?si=https://www.youtube.com/watch?v=6wGk_NEGfjA&list=PLlmXbT5mtvvyokhL9BQWLd90klOEe-_dT&index=23.com", embed: '<iframe width="560" height="315" src="https://www.youtube.com/embed/6wGk_NEGfjA?si=Jwlld0f_gtmdHveH" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>'},
+            { id: 2, title: "Entrevista Allison Sanchez", date: "2025-01-12", description: "Allison Sánchez, estudiante de Comunicación narra como las periodistas pasan por diversos riesgos: violencia psicológica, acoso, violencia física y represión.", link: "https://youtu.be/s7Evxlf79pc?si=1bB6jEGBTLKNZbNr", embed: '<iframe width="560" height="315" src="https://www.youtube.com/embed/s7Evxlf79pc?si=qNktCdkYS15LbXY3" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>' },
+            { id: 3, title: "Título de video 3", date: "2025-10-16", description: "Kristel Loja, estudiante de Trabajo Social destaca que la dificultad para las mujeres es una problemática generacional que prevalece en la actualidad.", link: "https://https://youtu.be/FoOotNt7iTo?si=vGN4U5PCKigEe0Q8.com", embed: '<iframe width="560" height="315" src="https://www.youtube.com/embed/FoOotNt7iTo?si=w0GU8X2VUQ7oakJt" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>'}
+        ];
+
+        podcastsState.data = [
+            { id: 1, title: "Desigualdad de Género - Periodismo en Violeta", date: "2025-01-08", description: "Abordamos las desigualdades laborales que enfrentan las mujeres periodistas y su impacto en el ejercicio de su profesión.", audio: '<iframe src="https://whyp.it/embeds/track/328980?token=GxONO" width="100%" height="200" scrolling="no" frameborder="0" loading="lazy"></iframe>' },
+            { id: 2, title: "Estereotipos de Género - Periodismo en Violeta", date: "2025-01-15", description: "Exploramos nuevas experiencias y reflexiones sobre los estereotipos de género que se encuentran presentes en la realidad de la mujer periodista.", audio: '<iframe src="https://whyp.it/embeds/track/328981?token=MlR4V" width="100%" height="200" scrolling="no" frameborder="0" loading="lazy"></iframe>' },
+            { id: 3, title: "Maternidad - Periodismo en Violeta", date: "2025-01-22", description: "Adentramos en una realidad que combina fuerza, pasión y desafío: ser mamá y periodista al mismo tiempo.", audio: '<iframe src="https://whyp.it/embeds/track/328982?token=GMSgp" width="100%" height="200" scrolling="no" frameborder="0" loading="lazy"></iframe>' },
+            { id: 4, title: "Representatividad Laboral - Periodismo en Violeta", date: "2025-02-05", description: "En esta entrega exploramos la falta de representatividad de las mujeres periodistas. ¿Por qué seguimos viendo redacciones dominadas por voces masculinas?", audio: '<iframe src="https://whyp.it/embeds/track/328983?token=VtcYA" width="100%" height="200" scrolling="no" frameborder="0" loading="lazy"></iframe>' }
+        ];
+
+        function initSection(type, state) {
+            const searchInput = document.getElementById(`${type}Search`);
+            const sortSelect = document.getElementById(`${type}Sort`);
+            const sortDir = document.getElementById(`${type}SortDir`);
+            const pagination = document.getElementById(`${type}-pagination`);
+
+            searchInput.addEventListener('keyup', () => updateSection(type, state));
+            sortSelect.addEventListener('change', () => updateSection(type, state));
+            sortDir.addEventListener('click', () => {
+                const currentDir = sortDir.getAttribute('data-dir');
+                const newDir = currentDir === 'desc' ? 'asc' : 'desc';
+                sortDir.setAttribute('data-dir', newDir);
+                sortDir.querySelector('.fa-arrow-up').classList.toggle('sort-active', newDir === 'asc');
+                sortDir.querySelector('.fa-arrow-down').classList.toggle('sort-active', newDir === 'desc');
+                updateSection(type, state);
+            });
+
+            pagination.querySelector('.prev-page').addEventListener('click', () => {
+                if (state.currentPage > 1) {
+                    state.currentPage--;
+                    renderSection(type, state);
+                }
+            });
+            pagination.querySelector('.next-page').addEventListener('click', () => {
+                 const maxPage = Math.ceil(state.filtered.length / itemsPerPage);
+                if (state.currentPage < maxPage) {
+                    state.currentPage++;
+                    renderSection(type, state);
+                }
+            });
+
+            updateSection(type, state);
+        }
+
+        function updateSection(type, state) {
+            const searchVal = document.getElementById(`${type}Search`).value.toLowerCase();
+            const sortMode = document.getElementById(`${type}Sort`).value;
+            const sortDir = document.getElementById(`${type}SortDir`).getAttribute('data-dir');
+
+            state.filtered = state.data.filter(item => item.title.toLowerCase().includes(searchVal) || item.description.toLowerCase().includes(searchVal));
+
+            if (sortMode === 'recent') {
+                state.filtered.sort((a, b) => new Date(b.date) - new Date(a.date));
+            } else {
+                 state.filtered.sort(() => Math.random() - 0.5);
+            }
+
+            if (sortDir === 'asc' && sortMode === 'recent') {
+                state.filtered.reverse();
+            }
+
+            state.currentPage = 1;
+            renderSection(type, state);
+        }
+
+        function renderSection(type, state) {
+            const container = document.getElementById(`${type}-container`);
+            container.innerHTML = '';
+            const startIndex = (state.currentPage - 1) * itemsPerPage;
+            const paginatedItems = state.filtered.slice(startIndex, startIndex + itemsPerPage);
+
+            if (paginatedItems.length === 0) {
+                container.innerHTML = '<p class="text-muted text-center py-4">No se encontraron resultados.</p>';
+            }
+
+            paginatedItems.forEach(item => {
+                let html = '';
+                if (type === 'photos') {
+                    
+                    let carouselInnerHtml = '';
+                    for (let i = 0; i < item.images.length; i += thumbnailsPerSlide) {
+                        const chunk = item.images.slice(i, i + thumbnailsPerSlide);
+                        const isActive = i === 0 ? 'active' : '';
+                        let thumbnailsHtml = '';
+                        chunk.forEach(img => {
+                            thumbnailsHtml += `
+                                <div class="col-6 col-md-3">
+                                    <img src="${img.src}" class="img-fluid photo-thumbnail-grid" alt="Foto" data-caption="${img.caption}" onclick="openModal(this.src, this.getAttribute('data-caption'))">
+                                </div>
+                            `;
+                        });
+                        carouselInnerHtml += `
+                            <div class="carousel-item ${isActive}">
+                                <div class="row g-2">
+                                    ${thumbnailsHtml}
+                                </div>
+                            </div>
+                        `;
+                    }
+
+                    html = `
+                        <div class="photo-collection mb-5 pb-4 border-bottom border-secondary">
+                            <h3 class="collection-title text-yellow">${item.title}</h3>
+                            <p class="media-date mb-2"><i class="far fa-calendar-alt me-2"></i>${item.date}</p>
+                            <p class="collection-desc text-white mb-3">${item.description}</p>
+                            <div id="carousel-${item.id}" class="carousel slide mb-3">
+                                <div class="carousel-inner">${carouselInnerHtml}</div>
+                                ${item.images.length > thumbnailsPerSlide ? `
+                                <button class="carousel-control-prev" type="button" data-bs-target="#carousel-${item.id}" data-bs-slide="prev">
+                                    <span class="carousel-control-prev-icon rounded-circle bg-dark bg-opacity-50 p-3" aria-hidden="true"></span>
+                                    <span class="visually-hidden">Previous</span>
+                                </button>
+                                <button class="carousel-control-next" type="button" data-bs-target="#carousel-${item.id}" data-bs-slide="next">
+                                    <span class="carousel-control-next-icon rounded-circle bg-dark bg-opacity-50 p-3" aria-hidden="true"></span>
+                                    <span class="visually-hidden">Next</span>
+                                </button>
+                                ` : ''}
+                            </div>
+                        </div>
+                    `;
+                } else if (type === 'videos') {
+            
+            let mediaContent;
+            if (item.embed) {
+                
+                mediaContent = item.embed;
+            } else {
+                
+                mediaContent = `
+                    <img src="${item.thumbnail}" alt="${item.title}" class="img-fluid" style="object-fit:cover; width:100%; height:100%;">
+                    <div class="play-overlay"><i class="fas fa-play-circle fa-3x text-white"></i></div>
+                `;
+            }
+
+            html = `
+                <div class="media-item row mb-4 pb-4 border-bottom border-secondary">
+                    <div class="col-md-5 mb-3 mb-md-0">
+                        <div class="video-placeholder ratio ratio-16x9">
+                             ${mediaContent} </div>
+                        <a href="${item.link}" target="_blank" class="btn btn-outline-purple btn-sm w-100 mt-2"><i class="fab fa-youtube me-2"></i>Ver en YouTube</a>
+                    </div>
+                    <div class="col-md-7">
+                        <h4 class="media-item-title text-white">${item.title}</h4>
+                        <p class="media-date mb-2"><i class="far fa-calendar-alt me-2"></i>${item.date}</p>
+                        <p class="media-item-desc text-gray">${item.description}</p>
+                    </div>
+                </div>
+            `;
+                } else if (type === 'podcasts') {
+                    html = `
+                        <div class="media-item row mb-4 pb-4 border-bottom border-secondary align-items-center">
+                            <div class="col-md-1 text-center mb-3 mb-md-0 d-none d-md-block">
+                                <i class="fas fa-podcast fa-3x text-yellow opacity-50"></i>
+                            </div>
+                            <div class="col-md-11">
+                                <h4 class="media-item-title text-white">${item.title}</h4>
+                                <p class="media-date mb-2"><i class="far fa-calendar-alt me-2"></i>${item.date}</p>
+                                <div class="audio-embed-placeholder mb-3">
+                                ${item.audio}  
+                                </div>
+                                <p class="media-item-desc text-gray small">${item.description}</p>
+                            </div>
+                        </div>
+                    `;
+                }
+                container.innerHTML += html;
+            });
+
+            updatePagination(type, state);
+        }
+
+        function updatePagination(type, state) {
+            const pagination = document.getElementById(`${type}-pagination`);
+            const maxPage = Math.ceil(state.filtered.length / itemsPerPage) || 1;
+            pagination.querySelector('.page-info').textContent = `Página ${state.currentPage} de ${maxPage}`;
+            pagination.querySelector('.prev-page').disabled = state.currentPage === 1;
+            pagination.querySelector('.next-page').disabled = state.currentPage === maxPage || maxPage === 0;
+        }
+
+        const imageModal = new bootstrap.Modal(document.getElementById('imageModal'));
+        const modalImage = document.getElementById('modalImage');
+        const modalCaption = document.getElementById('modalCaption');
+
+        window.openModal = function(src, caption) {
+            modalImage.src = src;
+            modalCaption.textContent = caption;
+            imageModal.show();
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            initSection('photos', photosState);
+            initSection('videos', videosState);
+            initSection('podcasts', podcastsState);
+        });
+    </script>
+</body>
+</html>
